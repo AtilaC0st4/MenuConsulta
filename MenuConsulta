@@ -1,3 +1,26 @@
+def realizar_login():
+    usuario = input("Digite o nome de usuário: ")
+    senha = input("Digite a senha: ")
+
+    try:
+        with open('usuarios.txt', 'r') as arquivo:
+            linhas = arquivo.readlines()
+            for linha in linhas:
+                usuario_arquivo, senha_arquivo = linha.strip().split(',')
+                if usuario == usuario_arquivo and senha == senha_arquivo:
+                    print("Login bem-sucedido!")
+                    return True
+                else:
+                    print("Usuário ou senha incorreto")
+                    return False 
+                
+    except FileNotFoundError:
+        with open('usuarios.txt', 'w') as arquivo:
+            pass
+        
+        cadastrar_usuario_senha()  
+        return True
+
 def cadastrar_usuario_senha():
     usuario = input("Digite o nome de usuário: ")
     senha = input("Digite a senha: ")
