@@ -1,0 +1,23 @@
+def cadastrar_usuario_senha():
+    usuario = input("Digite o nome de usuário: ")
+    senha = input("Digite a senha: ")
+    
+    with open('usuarios.txt', 'a') as arquivo:
+        
+        arquivo.write(f"{usuario},{senha}\n")
+
+    print("Usuário cadastrado com sucesso!")
+    print("Agora realize o Login")
+    realizar_login()
+    
+
+def agendar_consulta():
+    nome_paciente = input("Digite o nome do paciente: ")
+    data_consulta = input("Digite a data da consulta (DD/MM/AAAA): ")
+    hora_consulta = input("Digite a hora da consulta (HH:MM): ")
+    medico = input("Digite o nome do médico: ")
+
+    with open('consultas.txt', 'a') as arquivo:
+        arquivo.write(f"{nome_paciente},{data_consulta},{hora_consulta},{medico}\n")
+
+    print("Consulta agendada com sucesso!")
